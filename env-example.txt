@@ -1,0 +1,11 @@
+# monday.com API Configuration
+REACT_APP_MONDAY_API_TOKEN=your_monday_api_token
+REACT_APP_MONDAY_CLIENT_ID=your_monday_client_id
+REACT_APP_MONDAY_APP_URL=https://your-app-url.com
+REACT_APP_MONDAY_SIGNING_SECRET=your_monday_signing_secret
+
+# Claude AI Configuration
+REACT_APP_CLAUDE_API_KEY=your_claude_api_key
+
+# Development Environment
+REACT_APP_ENV=development

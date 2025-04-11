@@ -1,0 +1,104 @@
+import React, { useState, useEffect } from 'react';
+import { useAuth } from './AuthContext';
+import mondaySdk from 'monday-sdk-js';
+import { Button, Loader, Heading, Text } from 'monday-ui-react-core';
+
+// Initialize monday SDK
+const monday = mondaySdk();
+
+const Login: React.FC = () => {
+  const { setToken, loading, error } = useAuth();
+  const [localLoading, setLocalLoading] = useState(true);
+  const [localError, setLocalError] = useState<string | null>(null);
+
+  // Effect to check for monday context
+  useEffect(() => {
+    monday.listen('context', (res: any) => {
+      if (res.data && res.data.token) {
+        setToken(res.data.token);
+      } else {
+        setLocalLoading(false);
+      }
+    });
+    
+    // If we're not in monday context, we need to let the user know
+    setTimeout(() => {
+      setLocalLoading(false);
+    }, 2000);
+  }, [setToken]);
+
+  // Handle manual token input
+  const handleTokenSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const token = formData.get('token') as string;
+    
+    if (!token || token.trim() === '') {
+      setLocalError('Please enter a valid API token');
+      return;
+    }
+    
+    setToken(token);
+  };
+
+  if (loading || localLoading) {
+    return (
+      <div className="login-container">
+        <div className="login-card">
+          <Loader size="large" />
+          <Text>Connecting to monday.com...</Text>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="login-container">
+      <div className="login-card">
+        <Heading type="h1">AI Workflow Assistant</Heading>
+        <Heading type="h2">Login</Heading>
+        
+        {(error || localError) && (
+          <div className="error-message">
+            <Text type="text1" color="negative">
+              {error || localError}
+            </Text>
+          </div>
+        )}
+        
+        <div className="info-message">
+          <Text>
+            This app should be installed on your monday.com account.
+            If you're seeing this screen, you might be:
+          </Text>
+          <ul>
+            <li>Running the app outside of monday.com</li>
+            <li>Missing proper authentication</li>
+          </ul>
+        </div>
+        
+        <form onSubmit={handleTokenSubmit}>
+          <div className="form-group">
+            <label htmlFor="token">
+              <Text type="text1">Enter your monday.com API Token:</Text>
+            </label>
+            <input
+              type="text"
+              id="token"
+              name="token"
+              className="form-control"
+              placeholder="Your API token"
+            />
+            <Text type="text2" color="secondary">
+              You can generate an API token in monday.com Developer settings.
+            </Text>
+          </div>
+          
+          <Button type="submit">Connect</Button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
