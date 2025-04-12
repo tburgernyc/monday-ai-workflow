@@ -1,0 +1,23 @@
+name: Weekly Backup
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Every Sunday at midnight UTC
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Backup Branch
+        run: |
+          git checkout -b backup/$(date +'%Y-%m-%d')
+          git push origin backup/$(date +'%Y-%m-%d')
+      - name: Create ZIP Archive
+        run: |
+          zip -r submission-backup-$(date +'%Y-%m-%d').zip submission/
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: backup-$(date +'%Y-%m-%d')
+          files: submission-backup-$(date +'%Y-%m-%d').zip

@@ -1,3 +1,16 @@
+# Environment variables
+.env
+
+# SSL/TLS Certificates
+/certs
+*.pem
+*.key
+*.crt
+
+# Security-related files
+*.p12
+*.pfx
+*.jks
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies

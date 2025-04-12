@@ -10,12 +10,7 @@ import {
   Loader,
   Button,
   Dropdown,
-  Tabs,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  ProgressBar,
+  LinearProgressBar,
   Divider
 } from 'monday-ui-react-core';
 import { Board, Status, Group, Time } from 'monday-ui-react-core/icons';
@@ -180,18 +175,31 @@ const WorkflowAnalysis: React.FC = () => {
         <Box className="analysis-results">
           <Heading element="h2" style={{ marginBottom: '16px' }}>Analysis Results</Heading>
           
-          <Tabs activeTabId={activeTab} onTabChange={(tabId: number) => setActiveTab(tabId)}>
-            <TabList>
+          {/* Custom Tab Navigation */}
+          <Box className="custom-tabs">
+            {/* Tab Headers */}
+            <Flex className="tab-headers" style={{ borderBottom: '1px solid var(--border-color)', marginBottom: '16px' }}>
               {analysisTabs.map((tab, index) => (
-                <Tab key={tab.id} icon={tab.icon}>
+                <Button
+                  key={tab.id}
+                  leftIcon={tab.icon}
+                  kind={activeTab === index ? "primary" : "tertiary"}
+                  onClick={() => setActiveTab(index)}
+                  style={{
+                    marginRight: '8px',
+                    borderRadius: '4px 4px 0 0',
+                    borderBottom: activeTab === index ? '2px solid var(--primary-color)' : 'none'
+                  }}
+                >
                   {tab.title}
-                </Tab>
+                </Button>
               ))}
-            </TabList>
+            </Flex>
             
-            <TabPanels>
+            {/* Tab Content */}
+            <Box className="tab-content">
               {/* Metrics Tab */}
-              <TabPanel>
+              {activeTab === 0 && (
                 <Box style={{ padding: '24px' }}>
                   <Flex gap={24} wrap>
                     <Box className="metric-card" style={{ padding: '16px', backgroundColor: 'var(--primary-background-color)', borderRadius: '8px', flex: '1 0 200px' }}>
@@ -219,10 +227,10 @@ const WorkflowAnalysis: React.FC = () => {
                     </Box>
                   </Flex>
                 </Box>
-              </TabPanel>
+              )}
               
               {/* Bottlenecks Tab */}
-              <TabPanel>
+              {activeTab === 1 && (
                 <Box style={{ padding: '24px' }}>
                   <Text style={{ marginBottom: '16px' }}>Groups with the highest number of items and longest stagnation times:</Text>
                   
@@ -233,7 +241,7 @@ const WorkflowAnalysis: React.FC = () => {
                         <Text>({bottleneck.count} items, avg. {bottleneck.stagnation.toFixed(1)} days)</Text>
                       </Flex>
                       
-                      <ProgressBar
+                      <LinearProgressBar
                         value={(bottleneck.count / Math.max(...analysisResults.bottlenecks.map(b => b.count))) * 100}
                         indicateProgress
                         barStyle={index === 0 ? { backgroundColor: 'var(--negative-color)' } : {}}
@@ -243,10 +251,10 @@ const WorkflowAnalysis: React.FC = () => {
                     </Box>
                   ))}
                 </Box>
-              </TabPanel>
+              )}
               
               {/* Trends Tab */}
-              <TabPanel>
+              {activeTab === 2 && (
                 <Box style={{ padding: '24px' }}>
                   {historicalData ? (
                     <div>
@@ -275,10 +283,10 @@ const WorkflowAnalysis: React.FC = () => {
                     <Text>No historical data available.</Text>
                   )}
                 </Box>
-              </TabPanel>
+              )}
               
               {/* AI Insights Tab */}
-              <TabPanel>
+              {activeTab === 3 && (
                 <Box style={{ padding: '24px' }}>
                   {aiAnalysis ? (
                     <div>
@@ -289,9 +297,9 @@ const WorkflowAnalysis: React.FC = () => {
                     <Text>AI analysis not available. Run the analysis to generate AI insights.</Text>
                   )}
                 </Box>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+              )}
+            </Box>
+          </Box>
         </Box>
       )}
     </Box>
