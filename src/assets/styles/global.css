@@ -1,0 +1,242 @@
+/* Global CSS Styles */
+
+/* Import other CSS files */
+@import url('./layout.css');
+@import url('./workflowAnalysis.css');
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color-primary);
+  background-color: var(--background-color);
+}
+
+/* Global variables */
+:root {
+  --primary-color: #0073ea;
+  --secondary-color: #00c875;
+  --background-color: #f6f7fb;
+  --surface-color: #ffffff;
+  --text-color-primary: #323338;
+  --text-color-secondary: #676879;
+  --border-color: #e6e9ef;
+  --border-color-light: #f5f6f8;
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+  
+  /* Status colors */
+  --positive-color: #00c875;
+  --positive-color-hover: #00a25b;
+  --positive-color-selected: #e6f8ef;
+  
+  --negative-color: #e44258;
+  --negative-color-hover: #c03546;
+  --negative-color-selected: #fcedef;
+  
+  --warning-color: #fdab3d;
+  --warning-color-hover: #e09c37;
+  --warning-color-selected: #fff5e5;
+  
+  --info-color: #0086c0;
+  --info-color-hover: #0074a6;
+  --info-color-selected: #e5f4f9;
+}
+
+/* Dark theme variables */
+.dark-theme {
+  --background-color: #1f2023;
+  --surface-color: #292a2d;
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #a5a8b6;
+  --border-color: #3e3e42;
+  --border-color-light: #3e3e42;
+  
+  /* Status colors in dark mode */
+  --positive-color-selected: rgba(0, 200, 117, 0.15);
+  --negative-color-selected: rgba(228, 66, 88, 0.15);
+  --warning-color-selected: rgba(253, 171, 61, 0.15);
+  --info-color-selected: rgba(0, 134, 192, 0.15);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-bold {
+  font-weight: 500;
+}
+
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 16px; }
+.mt-4 { margin-top: 24px; }
+.mt-5 { margin-top: 32px; }
+
+.mb-1 { margin-bottom: 4px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 16px; }
+.mb-4 { margin-bottom: 24px; }
+.mb-5 { margin-bottom: 32px; }
+
+.ml-1 { margin-left: 4px; }
+.ml-2 { margin-left: 8px; }
+.ml-3 { margin-left: 16px; }
+.ml-4 { margin-left: 24px; }
+.ml-5 { margin-left: 32px; }
+
+.mr-1 { margin-right: 4px; }
+.mr-2 { margin-right: 8px; }
+.mr-3 { margin-right: 16px; }
+.mr-4 { margin-right: 24px; }
+.mr-5 { margin-right: 32px; }
+
+.p-1 { padding: 4px; }
+.p-2 { padding: 8px; }
+.p-3 { padding: 16px; }
+.p-4 { padding: 24px; }
+.p-5 { padding: 32px; }
+
+/* Loading spinner */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 24px;
+}
+
+.loading-spinner {
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Card styles */
+.card {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-body {
+  margin-bottom: 16px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Form elements */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--surface-color);
+  color: var(--text-color-primary);
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Error message */
+.error-message {
+  color: var(--negative-color);
+  background-color: var(--negative-color-selected);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* Success message */
+.success-message {
+  color: var(--positive-color);
+  background-color: var(--positive-color-selected);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}

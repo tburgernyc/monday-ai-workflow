@@ -1,0 +1,108 @@
+.board-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.board-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.board-list-filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.board-list-sort-dropdown {
+  min-width: 150px;
+}
+
+.board-list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.board-list-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.board-list-row:hover {
+  background-color: #f5f6f8;
+}
+
+.board-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.board-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.delete-button {
+  color: #e44258;
+}
+
+.delete-button:hover {
+  background-color: #fff0f1;
+}
+
+.board-list-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px;
+  text-align: center;
+  background-color: #f5f6f8;
+  border-radius: 8px;
+  min-height: 300px;
+}
+
+.board-list-loading, .board-list-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 300px;
+  text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .board-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .board-list-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .board-list-sort-dropdown {
+    width: 100%;
+  }
+  
+  .board-actions {
+    flex-direction: column;
+  }
+}

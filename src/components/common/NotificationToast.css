@@ -1,0 +1,128 @@
+/* NotificationToast Component Styles */
+
+.notification-toast {
+  position: fixed;
+  z-index: 9999;
+  min-width: 300px;
+  max-width: 450px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: auto;
+}
+
+.notification-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Positioning */
+.notification-toast.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.notification-toast.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.notification-toast.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.notification-toast.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.notification-content {
+  background-color: var(--primary-background-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px 0 16px;
+}
+
+.notification-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.notification-message {
+  padding: 8px 16px 16px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.notification-close-button {
+  flex-shrink: 0;
+}
+
+/* Progress bar for auto-close */
+.notification-progress-bar {
+  height: 4px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.notification-progress {
+  height: 100%;
+  transition: width 0.1s linear;
+}
+
+/* Notification types */
+.notification-success {
+  border-left: 4px solid var(--positive-color);
+}
+
+.notification-success .notification-progress {
+  background-color: var(--positive-color);
+}
+
+.notification-error {
+  border-left: 4px solid var(--negative-color);
+}
+
+.notification-error .notification-progress {
+  background-color: var(--negative-color);
+}
+
+.notification-warning {
+  border-left: 4px solid var(--warning-color);
+}
+
+.notification-warning .notification-progress {
+  background-color: var(--warning-color);
+}
+
+.notification-info {
+  border-left: 4px solid var(--primary-color);
+}
+
+.notification-info .notification-progress {
+  background-color: var(--primary-color);
+}
+
+/* Dark theme adjustments */
+.dark-theme .notification-content {
+  background-color: var(--secondary-background-color);
+}
+
+.dark-theme .notification-progress-bar {
+  background-color: rgba(255, 255, 255, 0.1);
+}

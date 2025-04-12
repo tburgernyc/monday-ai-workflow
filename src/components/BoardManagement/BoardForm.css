@@ -1,0 +1,44 @@
+.board-form-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.board-form-field {
+  margin-bottom: 24px;
+}
+
+.board-form-dropdown {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.board-form-actions {
+  margin-top: 32px;
+}
+
+.form-error-text {
+  color: #e44258;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .board-form-container {
+    max-width: 100%;
+    padding: 16px;
+  }
+  
+  .board-form-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .board-form-actions button {
+    width: 100%;
+  }
+}

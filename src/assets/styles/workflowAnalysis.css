@@ -1,0 +1,162 @@
+/* Workflow Analysis Styles */
+
+.workflow-analysis {
+  padding: 24px;
+}
+
+/* Board selector */
+.board-selector {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.board-dropdown {
+  width: 300px;
+}
+
+/* Analysis results */
+.analysis-results {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  margin-bottom: 32px;
+}
+
+/* Metric cards */
+.metric-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  flex: 1 0 200px;
+  min-width: 200px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.metric-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 8px 0;
+  color: var(--primary-color);
+}
+
+/* Bottlenecks section */
+.bottleneck-item {
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+}
+
+.bottleneck-item.critical {
+  border-left: 4px solid var(--negative-color);
+}
+
+.bottleneck-item.warning {
+  border-left: 4px solid var(--warning-color);
+}
+
+.bottleneck-item.normal {
+  border-left: 4px solid var(--info-color);
+}
+
+/* Trends section */
+.trends-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trends-table th,
+.trends-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.trends-table th {
+  font-weight: 500;
+  color: var(--text-color-secondary);
+}
+
+.trends-table tr:hover {
+  background-color: var(--border-color-light);
+}
+
+/* AI Insights section */
+.ai-insights {
+  padding: 16px;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.ai-insights-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.ai-insights-header svg {
+  margin-right: 8px;
+  color: var(--primary-color);
+}
+
+.ai-insights-content {
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.insight-card {
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+}
+
+.insight-card.improvement {
+  border-left: 4px solid var(--positive-color);
+}
+
+.insight-card.bottleneck {
+  border-left: 4px solid var(--negative-color);
+}
+
+.insight-card.suggestion {
+  border-left: 4px solid var(--info-color);
+}
+
+.insight-card h4 {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .workflow-analysis {
+    padding: 16px;
+  }
+  
+  .board-selector {
+    padding: 16px;
+  }
+  
+  .board-dropdown {
+    width: 100%;
+  }
+  
+  .metric-card {
+    flex: 1 0 100%;
+  }
+}
