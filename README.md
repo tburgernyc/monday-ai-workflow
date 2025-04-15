@@ -14,6 +14,7 @@ This application enhances monday.com workflows with AI-powered features, intelli
 - **Subscription Tiers**: Access premium features through flexible subscription plans
 - **Standardized UI Components**: Consistent UI using monday-ui-react-core components
 - **Performance Optimizations**: Enhanced caching and request deduplication for improved responsiveness
+- **GitHub MCP Integration**: Direct GitHub repository interaction through AI tools
 
 ## Getting Started
 
@@ -139,6 +140,18 @@ import { IconCategory, IconSize, IconType } from './components/common/icons/Icon
 />
 ```
 
+## GitHub MCP Integration
+
+The application includes integration with GitHub through the Model Context Protocol (MCP) server, enabling:
+
+- Automated repository management
+- Code search and analysis
+- Issue tracking and management
+- Pull request workflows
+- File operations directly from AI interfaces
+
+For more information on the GitHub MCP integration, see [MCP Setup Documentation](./mcp-setup-documentation.md).
+
 ## Testing
 
 ### Running Tests
@@ -179,6 +192,7 @@ npm test -- --coverage
 - [UI Standardization](./docs/ui-standardization-summary.md)
 - [Performance Optimizations](./docs/performance-optimization-summary.md)
 - [Phase 2 Implementation Summary](./docs/phase2-implementation-summary.md)
+- [MCP Setup Documentation](./mcp-setup-documentation.md)
 
 ## Repository Organization
 
